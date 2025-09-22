@@ -4,9 +4,19 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String [] args) {
-        MainWindow mw = new MainWindow();
-        mw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        mw.setSize(800, 600);
-        mw.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Sun and Moon Animation");
+
+            // Создаем главную панель
+            MainWindow mainWindow = new MainWindow();
+
+            // Настраиваем JFrame
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().add(mainWindow);
+            frame.pack();
+            frame.setLocationRelativeTo(null); // Центрируем окно
+            frame.setResizable(false); // Запрещаем изменение размера (опционально)
+            frame.setVisible(true);
+        });
     }
 }
