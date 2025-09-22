@@ -28,7 +28,7 @@ public class SunMoon implements SceneObject {
     }
 
     @Override
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, boolean lastIsDay) {
         Point2D pos = arcPos(lastT);
         if (lastIsDay) {
             drawSun(g, (int) pos.getX(), (int) pos.getY());

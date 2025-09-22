@@ -7,7 +7,7 @@ public class Config {
     public static final int HEIGHT = 600;
 
     public static final int FRAME_DELAY = 16; // мс
-    public static final double DAY_DURATION = 30.0; // секунд на цикл
+    public static final double DAY_DURATION = 30.0;
 
     // Солнце
 
@@ -37,8 +37,16 @@ public class Config {
     public static final Color SKY_DAY = new Color(135, 206, 250);
 
     public static final double ARC_CENTER_X = Config.WIDTH * 0.5;
-    public static final double ARC_CENTER_Y = Config.HEIGHT * 0.5; // Поднимаем центр выше
-    public static final double ARC_RADIUS = Config.WIDTH * 0.6; // Большой радиус для плавной дуги
-    public static final double ARC_START_ANGLE = 150; // градусы - начинаем слева
-    public static final double ARC_END_ANGLE = 30;   // градусы - заканчиваем справа
+    public static final double ARC_CENTER_Y = Config.HEIGHT * 0.5;
+    public static final double ARC_RADIUS = Config.WIDTH * 0.6;
+    public static final double ARC_START_ANGLE = 150;
+    public static final double ARC_END_ANGLE = 30;
+
+    public static final int CLOUD_COUNT = 5;
+
+    public static final int MOUNTAIN_COUNT = 6;
+
+    public static final int TREE_COUNT = 3;
+
+    public static final Color GRASS_COLOR = new Color(34, 139, 34);
 }
