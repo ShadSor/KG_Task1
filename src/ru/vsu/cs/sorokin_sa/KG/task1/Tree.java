@@ -18,10 +18,10 @@ public class Tree implements SceneObject {
     @Override
     public void draw(Graphics2D g, boolean isDay) {
         g.setColor(new Color(139, 69, 19));
-        g.fillRect(x, y - 40, 10, 40);
+        g.fillRect(x, y - 50, 20, 50);
 
         g.setColor(Color.GREEN);
-        g.fillOval(x - 15, y - 60, 40, 40);
+        g.fillOval(x - 25, y - 130, 70, 90);
     }
 }
 

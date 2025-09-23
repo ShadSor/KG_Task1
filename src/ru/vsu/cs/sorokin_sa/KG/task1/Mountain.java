@@ -8,8 +8,8 @@ public class Mountain implements SceneObject {
     private static final Random rand = new Random();
 
     public Mountain() {
-        x = rand.nextInt(Config.WIDTH);
-        height = 100 + rand.nextInt(150);
+        x = -150 + rand.nextInt(Config.WIDTH + 300);
+        height = 200 + rand.nextInt(150);
     }
 
     @Override
@@ -19,8 +19,10 @@ public class Mountain implements SceneObject {
     public void draw(Graphics2D g, boolean isDay) {
         g.setColor(new Color(100, 100, 100));
         int[] xs = {x, x + 150, x - 150};
-        int[] ys = {Config.HEIGHT - height, Config.HEIGHT, Config.HEIGHT};
+        int[] ys = {Config.HEIGHT - height, Config.HEIGHT - 100, Config.HEIGHT - 100};
         g.fillPolygon(xs, ys, 3);
     }
+
+
 }
 

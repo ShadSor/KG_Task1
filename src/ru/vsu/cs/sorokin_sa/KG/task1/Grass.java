@@ -9,7 +9,7 @@ public class Grass implements SceneObject {
     @Override
     public void draw(Graphics2D g, boolean isDay) {
         g.setColor(Config.GRASS_COLOR);
-        g.fillRect(0, Config.HEIGHT - 50, Config.WIDTH, 50);
+        g.fillRect(0, Config.HEIGHT - 100, Config.WIDTH, 100);
     }
 }
 

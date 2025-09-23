@@ -49,9 +49,7 @@ public class SunMoon implements SceneObject {
         Color topColor, bottomColor;
 
         if (isDay) {
-            // ДЕНЬ: плавный переход от ночи через рассвет/закат к дню и обратно
             if (t < 0.25) {
-                // Ночь -> Рассвет (0.0 - 0.25)
                 float progress = (float) (t / 0.25);
                 topColor = lerpColor(Config.SKY_NIGHT, Config.SKY_SUNRISE_SUNSET, progress);
                 bottomColor = lerpColor(Config.SKY_NIGHT, Config.SKY_DAWN_DUSK, progress);
@@ -91,13 +89,17 @@ public class SunMoon implements SceneObject {
     }
 
     private Point2D arcPos(double normalizedT) {
-        // Движение по дуге от левого края к правому
-        double startAngle = Math.toRadians(Config.ARC_START_ANGLE);
-        double endAngle = Math.toRadians(Config.ARC_END_ANGLE);
+        double startAngle = Config.ARC_START_ANGLE;
+        double endAngle = Config.ARC_END_ANGLE;
         double angle = startAngle + normalizedT * (endAngle - startAngle);
 
-        double x = Config.ARC_CENTER_X + Config.ARC_RADIUS * Math.cos(angle);
-        double y = Config.ARC_CENTER_Y + Config.ARC_RADIUS * Math.sin(angle);
+        double centerX = Config.ARC_CENTER_X;
+        double centerY = Config.ARC_CENTER_Y;
+        double radiusX = Config.ARC_RADIUS_X;
+        double radiusY = Config.ARC_RADIUS_Y;
+
+        double x = centerX + radiusX * Math.cos(angle);
+        double y = centerY + radiusY * Math.sin(angle);
 
         return new Point2D.Double(x, y);
     }

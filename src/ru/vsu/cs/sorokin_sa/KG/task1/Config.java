@@ -7,7 +7,7 @@ public class Config {
     public static final int HEIGHT = 600;
 
     public static final int FRAME_DELAY = 16; // мс
-    public static final double DAY_DURATION = 30.0;
+    public static final double DAY_DURATION = 5.0;
 
     // Солнце
 
@@ -37,10 +37,11 @@ public class Config {
     public static final Color SKY_DAY = new Color(135, 206, 250);
 
     public static final double ARC_CENTER_X = Config.WIDTH * 0.5;
-    public static final double ARC_CENTER_Y = Config.HEIGHT * 0.5;
-    public static final double ARC_RADIUS = Config.WIDTH * 0.6;
-    public static final double ARC_START_ANGLE = 150;
-    public static final double ARC_END_ANGLE = 30;
+    public static final double ARC_CENTER_Y = Config.HEIGHT * 0.61;
+    public static final double ARC_RADIUS_X = Config.WIDTH * 0.62;
+    public static final double ARC_RADIUS_Y = Config.WIDTH * 0.3;
+    public static final double ARC_START_ANGLE = Math.toRadians(200);
+    public static final double ARC_END_ANGLE = Math.toRadians(340);
 
     public static final int CLOUD_COUNT = 5;
 
