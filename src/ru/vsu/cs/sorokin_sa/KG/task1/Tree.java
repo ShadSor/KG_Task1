@@ -1,27 +1,57 @@
 package ru.vsu.cs.sorokin_sa.KG.task1;
 
 import java.awt.*;
-import java.util.Random;
+import java.util.*;
 
-public class Tree implements SceneObject {
-    private int x, y;
-    private static final Random rand = new Random();
+public class Tree implements Drawable {
+
+    private static final Set<Integer> BUSY = new HashSet<>();
+    private final int x, y;
 
     public Tree() {
-        x = rand.nextInt(Config.WIDTH / 2);
-        y = Config.HEIGHT - 30;
+        Random r = new Random();
+        int tx;
+        int minDistance = 80; // минимальное расстояние между деревьями
+        int attempts = 0;
+
+        // Деревья только в левой трети экрана
+        int leftThird = Config.WIDTH / 3;
+
+        do {
+            tx = r.nextInt(leftThird - 100) + 50; // отступ от краев в левой трети
+            attempts++;
+        } while (isTooClose(tx, minDistance) && attempts < 100);
+
+        BUSY.add(tx);
+        x = tx;
+        /* вся высота травы (100 px) – доступна для основания */
+        y = Config.HEIGHT - 100 + r.nextInt(90);   // 0-90 px вглубь травы
     }
 
-    @Override
-    public void update(double elapsed, double dt, boolean isDay) {}
+    private boolean isTooClose(int tx, int minDistance) {
+        for (int busyX : BUSY) {
+            if (Math.abs(busyX - tx) < minDistance) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public void draw(Graphics2D g, boolean isDay) {
-        g.setColor(new Color(139, 69, 19));
-        g.fillRect(x, y - 50, 20, 50);
+        /* ствол */
+        g.setColor(new Color(101, 67, 33));
+        g.fillRect(x - 10, y - 45, 20, 45);   // чуть короче
 
-        g.setColor(Color.GREEN);
-        g.fillOval(x - 25, y - 130, 70, 90);
+        /* 3 яруса, смещённые вниз и перекрывающиеся - более тёмный оттенок */
+        g.setColor(new Color(0, 100, 0)); // Тёмно-зелёный
+        for (int i = 0; i < 3; i++) {
+            int h = 40;                          // высота треугольника
+            int w = 70 - i * 12;                 // уменьшаем кверху
+            int baseY = y - 45 - i * (h - 8);    // «-8» даёт перекрытие
+            int[] px = {x - w/2, x, x + w/2};
+            int[] py = {baseY, baseY - h, baseY};
+            g.fillPolygon(px, py, 3);
+        }
     }
 }
-

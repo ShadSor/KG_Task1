@@ -8,24 +8,29 @@ import java.util.List;
 public class MainWindow extends JPanel {
     private double elapsed = 0;
 
-    private SunMoon sunMoon;
-    private List<SceneObject> objects = new ArrayList<>();
+    private final SunMoon sunMoon = new SunMoon();
+    private List<Animatable> animatables = new ArrayList<>();
+    private List<Drawable> drawables = new ArrayList<>();
 
     public MainWindow() {
         setPreferredSize(new Dimension(Config.WIDTH, Config.HEIGHT));
         setBackground(Config.SKY_NIGHT);
 
-        sunMoon = new SunMoon();
-        objects.add(sunMoon);
+        animatables.add(sunMoon);
+        drawables.add(sunMoon);
 
 
-        for (int i = 0; i < Config.CLOUD_COUNT; i++) objects.add(new Cloud());
-        for (int i = 0; i < Config.MOUNTAIN_COUNT; i++) objects.add(new Mountain());
+        for (int i = 0; i < Config.CLOUD_COUNT; i++) {
+            Cloud c = new Cloud();
+            animatables.add(c);
+            drawables.add(c);
+        }
+        for (int i = 0; i < Config.MOUNTAIN_COUNT; i++) drawables.add(new Mountain());
 
-        objects.add(new Grass());
-        objects.add(new LogWood());
+        drawables.add(new Grass());
+        drawables.add(new LogWood());
 
-        for (int i = 0; i < Config.TREE_COUNT; i++) objects.add(new Tree());
+        for (int i = 0; i < Config.TREE_COUNT; i++) drawables.add(new Tree());
 
 
         Timer timer = new Timer(Config.FRAME_DELAY, e -> {
@@ -38,8 +43,8 @@ public class MainWindow extends JPanel {
                     (fullCycleTime / Config.DAY_DURATION) :
                     ((fullCycleTime - Config.DAY_DURATION) / Config.DAY_DURATION);
 
-            for (SceneObject obj : objects) {
-                obj.update(elapsed, phaseTime, isDay);
+            for (Animatable a : animatables) {
+                a.update(elapsed, phaseTime, isDay);
             }
             repaint();
         });
@@ -60,8 +65,8 @@ public class MainWindow extends JPanel {
 
         sunMoon.drawSky(g, phaseTime, isDay);
 
-        for (SceneObject obj : objects) {
-            obj.draw(g, isDay);
+        for (Drawable d : drawables) {
+            d.draw(g, isDay);
         }
 
         g.dispose();

@@ -45,9 +45,10 @@ public class Config {
 
     public static final int CLOUD_COUNT = 5;
 
-    public static final int MOUNTAIN_COUNT = 6;
+    public static final int MOUNTAIN_COUNT = 3;
 
     public static final int TREE_COUNT = 3;
 
     public static final Color GRASS_COLOR = new Color(34, 139, 34);
+    public static final int GRASS_HEIGHT = 100;
 }

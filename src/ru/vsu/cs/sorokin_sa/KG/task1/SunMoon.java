@@ -5,7 +5,7 @@ import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
-public class SunMoon implements SceneObject {
+public class SunMoon implements Animatable, Drawable {
     private double lastElapsed = 0;
     private double lastT = 0;
     private boolean lastIsDay = true;
@@ -15,16 +15,16 @@ public class SunMoon implements SceneObject {
     private boolean prevIsDay = true;
 
     @Override
-    public void update(double elapsed, double t, boolean isDay) {
+    public void update(double elapsed, double dayPhase, boolean isDay) {
         this.lastElapsed = elapsed;
-        this.lastT = t;
+        this.lastT = dayPhase;
 
         if (prevIsDay && !isDay) {
             nightCount++;
             currentPhase = MoonPhase.values()[nightCount % MoonPhase.values().length];
         }
         prevIsDay = isDay;
-        this.lastIsDay = isDay;
+        lastIsDay = isDay;
     }
 
     @Override
