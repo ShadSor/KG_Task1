@@ -32,6 +32,10 @@ public class MainWindow extends JPanel {
 
         for (int i = 0; i < Config.TREE_COUNT; i++) drawables.add(new Tree());
 
+        Cow cow = new Cow(Config.COW_X, Config.COW_Y);
+        animatables.add(cow);
+        drawables.add(cow);
+
 
         Timer timer = new Timer(Config.FRAME_DELAY, e -> {
             elapsed += Config.FRAME_DELAY / 1000.0;

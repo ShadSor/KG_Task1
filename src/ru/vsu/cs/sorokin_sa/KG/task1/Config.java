@@ -51,4 +51,8 @@ public class Config {
 
     public static final Color GRASS_COLOR = new Color(34, 139, 34);
     public static final int GRASS_HEIGHT = 100;
+
+
+    public static final int COW_X = WIDTH / 2 - 30;
+    public static final int COW_Y = HEIGHT - 90;
 }

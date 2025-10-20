@@ -63,28 +63,23 @@ public class Mountain implements Drawable {
         g.setColor(body);
         g.fillPolygon(xs, ys, xs.length);
 
-        /* ----- снежная шапка, точно повторяющая форму вершины ----- */
+        /* снежная шапка, точно повторяющая форму вершины */
         for (int i = 1; i <= xs.length - 2; i++) {
             if (ys[i] >= snowLine) continue;
 
-            // Определяем точки пересечения снега со склонами
-            int snowHeight = 40; // Фиксированная высота снега
+            int snowHeight = 40;
 
-            // Находим точки на левом склоне на высоте снега
             double leftSlope = (double)(ys[i] - ys[i-1]) / (xs[i] - xs[i-1]);
             int leftSnowX = xs[i] - (int)(snowHeight / Math.abs(leftSlope));
             int leftSnowY = ys[i] + snowHeight;
 
-            // Находим точки на правом склоне на высоте снега
             double rightSlope = (double)(ys[i] - ys[i+1]) / (xs[i] - xs[i+1]);
             int rightSnowX = xs[i] + (int)(snowHeight / Math.abs(rightSlope));
             int rightSnowY = ys[i] + snowHeight;
 
-            // Создаем полигон снега, который точно повторяет форму вершины
             int[] snowXs = {leftSnowX, xs[i], rightSnowX};
             int[] snowYs = {leftSnowY, ys[i], rightSnowY};
 
-            /* вертикальный градиент белого-серого */
             GradientPaint gp = new GradientPaint(
                     0, ys[i], Color.WHITE,
                     0, leftSnowY, new Color(230,230,250));
