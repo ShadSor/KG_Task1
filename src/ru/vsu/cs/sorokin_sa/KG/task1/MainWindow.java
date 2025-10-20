@@ -31,11 +31,16 @@ public class MainWindow extends JPanel {
         drawables.add(new FlowerManager());
         drawables.add(new LogWood());
 
-        for (int i = 0; i < Config.TREE_COUNT; i++) drawables.add(new Tree());
-
         Cow cow = new Cow(Config.COW_X, Config.COW_Y);
         animatables.add(cow);
         drawables.add(cow);
+
+
+        Tree.addRandomTree();
+        Tree.addRandomTree();
+
+
+        drawables.addAll(Tree.getDrawables());
 
 
         Timer timer = new Timer(Config.FRAME_DELAY, e -> {
