@@ -55,4 +55,7 @@ public class Config {
 
     public static final int COW_X = WIDTH / 2 - 30;
     public static final int COW_Y = HEIGHT - 90;
+
+    public static final int FLOWER_COUNT = 8;
+    public static final int FLOWER_MIN_DISTANCE = 30;
 }

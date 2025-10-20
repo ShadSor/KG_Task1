@@ -28,6 +28,7 @@ public class MainWindow extends JPanel {
         for (int i = 0; i < Config.MOUNTAIN_COUNT; i++) drawables.add(new Mountain());
 
         drawables.add(new Grass());
+        drawables.add(new FlowerManager());
         drawables.add(new LogWood());
 
         for (int i = 0; i < Config.TREE_COUNT; i++) drawables.add(new Tree());
