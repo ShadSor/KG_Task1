@@ -57,4 +57,6 @@ public class Config {
 
     public static final int FLOWER_COUNT = 8;
     public static final int FLOWER_MIN_DISTANCE = 30;
+
+    public static final int GRASS_CLUMP_COUNT = 20;
 }

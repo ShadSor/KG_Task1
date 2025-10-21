@@ -28,13 +28,17 @@ public class MainWindow extends JPanel {
         for (int i = 0; i < Config.MOUNTAIN_COUNT; i++) drawables.add(new Mountain());
 
         drawables.add(new Grass());
+        for (int i = 0; i < Config.GRASS_CLUMP_COUNT; i++) {
+            GrassClump.addRandomNonOverlapping();
+        }
+        drawables.addAll(GrassClump.getAllDrawables());
         drawables.add(new FlowerManager());
         drawables.add(new LogWood());
 
         Cow cow = new Cow(Config.COW_X, Config.COW_Y);
         animatables.add(cow);
         drawables.add(cow);
-
+        drawables.add(new Pond());
 
         Tree.addRandomTree();
         Tree.addRandomTree();
